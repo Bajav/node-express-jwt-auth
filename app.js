@@ -1,3 +1,5 @@
+import dotenv from 'dotenv'
+dotenv.config();
 import  express from 'express';
 import mongoose from'mongoose';
 import authRoutes from './routes/authRoutes.js';
@@ -12,8 +14,8 @@ app.use(express.json());
 app.set('view engine', 'ejs');
 
 // database connection
-const dbURI = 'mongodb+srv://balijawahussein:TKTdev12345@tktdb.arfqreg.mongodb.net/?appName=TKTDB';
-mongoose.connect(dbURI)
+console.log(process.env.DB_URL);
+mongoose.connect(process.env.DB_URL)
   .then((result) => app.listen(3000))
   .catch((err) => console.log(err));
 
